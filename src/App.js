@@ -72,7 +72,7 @@ class App extends React.Component {
         console.log(err);
       })
   }
-
+  
   componentDidMount() {
     this.checkIfLoggedIn();
   }
