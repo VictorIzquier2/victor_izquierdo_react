@@ -1,0 +1,10 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+}
+.is-20 {
+  width: 20rem;
+  margin:0 1rem;
+}

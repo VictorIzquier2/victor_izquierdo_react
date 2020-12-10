@@ -3,7 +3,6 @@ import 'bulma/css/bulma.css'
 
 // COMPONENTS
 import ExperienceForm from './ExperienceForm';
-import Experiences from './Experiences';
 
 // DEPENDENCIES
 //import { Link, Route, Redirect, Switch } from 'react-router-dom';
@@ -19,7 +18,7 @@ class Profile extends React.Component {
       ubicacion: '',
       descripcion: ''
     },
-    experiencesFromDB: {}
+    experiencesFromDB: 0
   }
 
   service = new UserService();
@@ -61,6 +60,29 @@ class Profile extends React.Component {
     //console.log(_eventTarget.name)
       this.setState({experience: {...this.state.experience, [_eventTarget.name]: _eventTarget.value}})
   }
+
+  experiencia = () => {
+    return this.state.experiencesFromDB.map((item)=>{
+      return (
+          <div className='column is-half'>
+            <div className='box'>
+            <article className='media'>
+              <div className='media-left'>
+                <figure className='image is-64x64'>
+                  <img src='https://bulma.io/images/placeholders/64x64.png'/>
+                </figure>
+              </div>
+              <div className='media-content'>
+                <p><strong>{item.cargo}</strong> <small>{item.empleo} en {item.empresa}</small></p>
+                <p>{item.descripcion}</p>
+                <p><small>{item.ubicacion}</small></p>
+              </div>
+            </article>
+            </div>
+          </div>
+      )
+    })
+  }
   
   render(){
     return(
@@ -70,10 +92,11 @@ class Profile extends React.Component {
           experience={this.state.experience}
           changeHandler={this.changeHandler}
          />
-         {this.state.experiencesFromDB !== 'undefined' ?
-           <Experiences getExperiences={this.state.experiencesFromDB}/> :
-           null
-         }
+        <div className='container is-widescreen is-full'>
+          <div className='columns is-full'>
+            {this.state.experiencesFromDB && this.experiencia()}
+          </div>
+        </div>
 
       </div>
     )
