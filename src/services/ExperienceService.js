@@ -8,8 +8,13 @@ class ExperienceService {
     });
     this.service = service;
   }
+  getExperiences = () => {
+    return this.service.get('/profile/experiences')
+      .then(response => response.data);
+  }
+
   newExperience = (cargo, empleo, empresa, ubicacion, descripcion) => {
-    return this.service.post('/profile/newExperience', {cargo, empleo, empresa, ubicacion, descripcion})
+    return this.service.post('/profile/addExperience', {cargo, empleo, empresa, ubicacion, descripcion})
       .then((response) => {
         console.log(response.data);
         return response.data

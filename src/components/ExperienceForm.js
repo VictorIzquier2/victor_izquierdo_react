@@ -1,7 +1,7 @@
 import react from 'react';
 import 'bulma/css/bulma.css'
 
-const ProfesionalXP = (props) => {
+const ExperienceForm = (props) => {
   return(
     <div>
         <h2>Experiencia</h2>
@@ -47,4 +47,4 @@ const ProfesionalXP = (props) => {
     </div>
   )
 }
-export default ProfesionalXP;
+export default ExperienceForm;
