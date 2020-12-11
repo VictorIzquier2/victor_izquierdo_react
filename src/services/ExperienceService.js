@@ -12,7 +12,7 @@ class ExperienceService {
     return this.service.get('/profile/experiences')
       .then(response => response.data);
   }
-
+  
   newExperience = (cargo, empleo, empresa, ubicacion, descripcion) => {
     return this.service.post('/profile/addExperience', {cargo, empleo, empresa, ubicacion, descripcion})
       .then((response) => {
@@ -23,5 +23,18 @@ class ExperienceService {
         console.log(err);
       })
   }
+
+  deleteExperience = (id) => {
+    console.log(id);
+    return this.service.post('/profile/experiences/delete', {id})
+      .then((response) => {
+        console.log(response.data)
+        return response.data
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
 }
 export default ExperienceService; 

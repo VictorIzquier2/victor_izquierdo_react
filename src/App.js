@@ -76,7 +76,7 @@ class App extends React.Component {
   componentDidMount() {
     this.checkIfLoggedIn();
   }
-
+  
   render() {
     return (
       <div className='App'>
@@ -85,7 +85,7 @@ class App extends React.Component {
             <nav className='navbar is-light' role='navigation' aria-label='main navigation'>
               <div className='navbar-brand'>
                 <Link className='navbar-item' to='#'>
-                  <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/>
+                  <img src="https://bulma.io/images/bulma-logo.png" alt='bulma' width="112" height="28"/>
                 </Link>
                 <Link role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicMenu">
                   <span aria-hidden='true'></span>

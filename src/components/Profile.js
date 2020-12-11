@@ -27,6 +27,7 @@ class Profile extends React.Component {
   getExperiencesFromDB = () => {
     return this.service.getExperiences()
     .then((response) =>{
+      console.log(response)
       this.setState({experiencesFromDB: response})
       console.log(this.state.experiencesFromDB);
     })
@@ -34,7 +35,22 @@ class Profile extends React.Component {
       console.log(err);
     })
   }
-  componentDidMount(){
+
+  deleteExperiencesFromDB = (event, id) => {
+    event.preventDefault();
+    this.service.deleteExperience(id)
+      .then(() => {
+        this.service.getExperiences()
+          .then((response)=> {
+             this.setState({experiencesFromDB: response})
+          })          
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  getAllExperiences = () => {
     this.getExperiencesFromDB()
       .then((response) => {
         console.log(response);
@@ -42,6 +58,10 @@ class Profile extends React.Component {
       .catch((err) => {
         console.log(err);
       })
+  }
+
+  componentDidMount(){
+    this.getAllExperiences();
   }
   
   submitNewExperience = (event) => {
@@ -73,9 +93,13 @@ class Profile extends React.Component {
                 </figure>
               </div>
               <div className='media-content'>
-                <p><strong>{item.cargo}</strong> <small>{item.empleo} en {item.empresa}</small></p>
-                <p>{item.descripcion}</p>
-                <p><small>{item.ubicacion}</small></p>
+                  <p><strong>{item.cargo}</strong> <small>{item.empleo} en {item.empresa}</small></p>
+                  <p>{item.descripcion}</p>
+                  <p><small>{item.ubicacion}</small></p>
+                <form onSubmit={(event)=>this.deleteExperiencesFromDB(event, item._id)}
+                >
+                    <button type='submit'>Delete</button>
+                </form>                
               </div>
             </article>
             </div>

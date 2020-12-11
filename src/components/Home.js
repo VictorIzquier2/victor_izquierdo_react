@@ -2,6 +2,7 @@ import React from 'react';
 import 'bulma/css/bulma.css';
 import '../App.css';
 
+
 const Home = (props) => {
   return(
 
@@ -10,39 +11,6 @@ const Home = (props) => {
       <h3>{props.isLogged.username && `welcome, ${props.isLogged.username}`}</h3>
       {props.isLogged.username && <button onClick={() => props.logOut()}>Log Out</button>}
       <div className='sections is-full'>
-        <section className='section is-full'>
-          <div className='container columns is-mobile'>
-            <div className='column is-half-desktop is-gapless'>
-              <div className='image is-square'>
-                <img src='#' alt='Victor Izquierdo'/>
-              </div>
-            </div>
-            <div className='column is-half-desktop is-gapless'>
-              <div className='aside'>
-                <div className='info'>
-                  <section className='section'>
-                    <div className='container'>
-                      <p><span>Toma ventaja</span> con el pack de recursos y estrategias que utilizamos en mi agencia pra generar miles de dólares cadadía, en piloto automático</p>
-                    </div>
-                    </section>
-                  <section className='section'>
-                    <div className='container'>
-                      <h5 className='title is-5'>Échale un <span>VISTAZO</span> a mi currículum</h5>
-                      <button>Envíame el Currículo</button>
-                      <h6 className='title is-6'>Sin secretos, 100% el mismo que utilizamos día a día en mi agencia</h6>
-                    </div>
-                  </section>
-                  <section className='section'>
-                    <div className='container'>
-                      <p><span>He ayudado a vender más a </span></p>
-                      <img src="#" alt="empresas"/>
-                    </div>
-                  </section>
-                </div>
-              </div>{/*end of aside*/}
-            </div>
-          </div>
-        </section>
         <section className='section'>
           <div className='container columns is-mobile'>
             <div className='column is-two-thirds-tablet is-gapless'>
@@ -56,7 +24,7 @@ const Home = (props) => {
             </div>
             <div className='column is-one-third-widescreen is-gapless'>
               <div className='image is-square'>
-                <img src='#' alt='Victor Izquierdo 2'/>
+                <img src='../../public/images/victor-izquierdo.png' alt='Victor Izquierdo 2'/>
               </div>
             </div>
           </div>
@@ -78,7 +46,7 @@ const Home = (props) => {
               </div>
               <div className='column is-half-desktop is-gapless'>
                 <div className='image'>
-                  <img src='#' alt='Dispositivos'/>
+                  <img src='' alt='Dispositivos'/>
                   <button>Quiero empezar por aquí</button>
                 </div>
               </div>
