@@ -64,22 +64,46 @@ class Profile extends React.Component {
     this.getAllExperiences();
   }
   
-  submitNewExperience = (event) => {
-   event.preventDefault();
-   this.service.newExperience(this.state.experience.cargo, this.state.experience.empleo, this.state.experience.empresa, this.state.experience.ubicacion, this.state.experience.descripcion)
-   .then((result) => {
-     console.log(result);
-     this.getExperiencesFromDB();
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  submitNewExperience = (e) => {
+   e.preventDefault();
+   //this.service.newExperience(this.state.experience.cargo, this.state.experience.empleo, this.state.experience.empresa, this.state.experience.ubicacion, this.state.experience.descripcion)
+   //.then((result) => {
+     //console.log(result);
+     //this.getExperiencesFromDB();
+    //})
+    //.catch((err) => {
+      //console.log(err)
+    //})
+
+    this.service.saveNewThing(this.state.experience)
+      .then(res => {
+          console.log('added: ', res);
+          // here you would redirect to some other page 
+      })
+      .catch(err => {
+          console.log("Error while adding the thing: ", err);
+      });
+
   }
 
-  changeHandler = (_eventTarget) => {
+  changeHandler = (e) => {
     //console.log(_eventTarget.name)
-      this.setState({experience: {...this.state.experience, [_eventTarget.name]: _eventTarget.value}})
+    //this.setState({experience: {...this.state.experience, [_eventTarget.name]: _eventTarget.value}})
+    const { name, value } = e.target;
+    this.setState({ experience: { ...this.state.experience, [name]: value } })
   }
+
+  handleFileUpload = e => {
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", e.target.files[0]);
+    this.service.handleUpload(uploadData)
+      .then(response => {
+          return this.setState({ experience: { ...this.state.experience, imageUrl: response.secure_url } });
+      })
+      .catch(err => {
+          console.log("Error while uploading the file: ", err);
+      });
+    }
 
   experiencia = () => {
     return this.state.experiencesFromDB.map((item)=>{
@@ -89,7 +113,7 @@ class Profile extends React.Component {
             <article className='media'>
               <div className='media-left'>
                 <figure className='image is-64x64'>
-                  <img src='https://bulma.io/images/placeholders/64x64.png'/>
+                  <img src={item.imageUrl}/>
                 </figure>
               </div>
               <div className='media-content'>
@@ -115,6 +139,7 @@ class Profile extends React.Component {
           submitNewExperience={this.submitNewExperience}
           experience={this.state.experience}
           changeHandler={this.changeHandler}
+          handleFileUpload={this.handleFileUpload}
          />
         <div className='container is-widescreen is-full'>
           <div className='columns is-full'>
