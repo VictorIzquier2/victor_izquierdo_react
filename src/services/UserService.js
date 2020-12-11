@@ -24,6 +24,10 @@ class UserService {
     return this.service.post('/logout', {})
     .then(response => response.data)
   }
+  isAdmin = () => {
+    return this.service.get('/isadmin')
+      .then(response => response.data);
+  }
 }
 
 export default UserService; 

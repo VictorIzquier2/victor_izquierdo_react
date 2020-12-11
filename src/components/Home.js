@@ -1,30 +1,38 @@
 import React from 'react';
 import 'bulma/css/bulma.css';
 import '../App.css';
+import './css/home.css';
+import image from './images/victor-izquierdo.png';
+import facebook from './images/facebook.png';
+import linkedIn from './images/linkedIn.png';
+import gitHub from './images/gitHub.png';
+import dragonKaiDojo from './images/dragonKaiDojo.png';
+
+
+import { Link } from 'react-router-dom';
 
 
 const Home = (props) => {
   return(
 
     <div className='container is-widescreen is-full'>
-      <h2>Home</h2>
-      <h3>{props.isLogged.username && `welcome, ${props.isLogged.username}`}</h3>
-      {props.isLogged.username && <button onClick={() => props.logOut()}>Log Out</button>}
+      <br/>
       <div className='sections is-full'>
-        <section className='section'>
-          <div className='container columns is-mobile'>
-            <div className='column is-two-thirds-tablet is-gapless'>
-              <div className='info'>
+        <section className='section sky-blue'>
+          <div className='container opposites columns marginLeftZero is-mobile'>
+            <div className='column info is-half is-gapless'>
+              <div className='info lake-blue'>
                 <h5 className='title is-5'>Hola, soy Victor</h5>
-                <h4 className='title is-4'>Desarrollador Full Stack</h4>
-                <h6 className='title is-6'>Ayudo a potenciar los negocios de marcas y profesionales a través del marketing de contenidos, redes sociales, email marketing y publicidad online.
-                </h6>
-                <button>Más sobre Víctor</button>
+                <h3 className='title is-3'>Desarrollador Full Stack</h3>
+                <p><strong>Combino habilidades de Front-end y Back-end para ofrecer una experiencia totalmente inmersiva y completa a los clientes.
+                </strong></p>
+                <br/>
+                 {!props.isLogged.username && <Link className='button is-primary' to='/signup'>Más sobre Victor</Link>}
               </div>
             </div>
-            <div className='column is-one-third-widescreen is-gapless'>
+            <div className='column is-half is-gapless'>
               <div className='image is-square'>
-                <img src='../../public/images/victor-izquierdo.png' alt='Victor Izquierdo 2'/>
+                <img src={image} alt='Victor Izquierdo'/>
               </div>
             </div>
           </div>
@@ -32,70 +40,77 @@ const Home = (props) => {
         <section className='section'>
           <div className='container'>
             <h5 className='title is-5'>Elige por dónde quieres empezar</h5>
-            <h6 className='title is-6'>Arrasa a nivel digital de forma fácil y directa</h6>
-            <p>En nuestro sitio la información está organizada de forma tal que puedas sacarle el mayor provecho. Tenemos 4 rutas de aprendizaje para que te convertas en un crack en el tema que más te interesa. En cada guía de aprendizaje tenemos, Post, Plantillas, Cursos, Pack, Vídeos y muchos contenidos. Las guías te ayudarán a ir adquiriendo los conocimientos y habilidades que necesitas paso a paso.
+            <p className='has-text-left'>En ésta landing-page la información está organizada de forma que puedas acceder a ella rápida y directa. Tienes 4 rutas de contacto para que puedas evaluarme profesionalmente. En cada ruta te encontrarás con proyectos visuales, contactos, repositorios, aplicaciones, juegos y otros contenidos. También puedes logarte en el menú de arriba y descubrir donde he trabajado y cómo he aprendido a hacer todas éstas cosas.
             </p>
           </div>
+          <br/>
           <article className='article'>
             <div className='columns is-mobile'>
-              <div className='column is-half-desktop is-gapless'>
+              <div className='column info is-half-desktop is-gapless'>
                 <div className='info'>
-                  <h5 className='title is-5'>Facebook ads</h5>
-                  <p>Domina la herramienta que te hará visible al instante</p>
+                  <h5 className='title is-5'>Facebook</h5>
+                  <p>Conecta con mi Facebook para ver qué comparto</p>
                 </div>
               </div>
               <div className='column is-half-desktop is-gapless'>
                 <div className='image'>
-                  <img src='' alt='Dispositivos'/>
-                  <button>Quiero empezar por aquí</button>
+                  <a href='https://www.facebook.com/V%C3%ADctor-Izquierdo-Designs-103974914480519' target='_blank'>
+                    <img src={facebook} alt='Facebook'/>
+                  </a>
                 </div>
               </div>
             </div>
           </article>
+          <br/>
           <article className='article'>
             <div className='columns is-mobile'>
-              <div className='column is-half-desktop is-gapless'>
+              <div className='column info is-half-desktop is-gapless'>
                 <div className='info'>
-                  <h5 className='title is-5'>Gana dinero con tu blog</h5>
-                  <p>Genera ingresos estables que alimenten tu cuenta de resultados</p>
+                  <h5 className='title is-5'>LinkedIn</h5>
+                  <p>Visita mi perfil y únete a mi red de contactos</p>
                 </div>
               </div>
               <div className='column is-half-desktop is-gapless'>
                 <div className='image'>
-                  <img src='#' alt='Monetizacion'/>
-                  <button>Me apunto</button>
+                  <a href='https://www.linkedin.com/in/victorjesusizquierdo/' target='blank'>
+                    <img src={linkedIn} alt='LinkedIn'/>
+                  </a>
                 </div>
               </div>
             </div>
           </article>
+          <br/>
           <article className='article'>
             <div className='columns is-mobile'>
-              <div className='column is-half-desktop is-gapless'>
+              <div className='column info is-half-desktop is-gapless'>
                 <div className='info'>
-                  <h5 className='title is-5'>Redes sociales</h5>
-                  <p>Conecta con tus clientes y conviételos en embajadores de tu marca</p>
+                  <h5 className='title is-5'>GitHub</h5>
+                  <p>Entra en mi Github y echa un vistazo a los proyectos en los que estoy trabajando</p>
                 </div>
               </div>
               <div className='column is-half-desktop is-gapless'>
                 <div className='image'>
-                  <img src='#' alt='Redes sociales'/>
-                  <button>Me interesa</button>
+                  <a href='https://github.com/VictorIzquier2' target='_blank'>
+                    <img src={gitHub} alt='GitHub'/>
+                  </a>
                 </div>
               </div>
             </div>
           </article>
+          <br/>
           <article className='article'>
             <div className='columns is-mobile'>
-              <div className='column is-half-desktop is-gapless'>
+              <div className='column info is-half-desktop is-gapless'>
                 <div className='info'>
-                  <h5 className='title is-5'>Marketing automatizado</h5>
-                  <p>Comienza desde hoy a vender en piloto automático</p>
+                  <h5 className='title is-5'>Juega a Dragon Kai Dojo</h5>
+                  <p>Dragon Kai Dojo es un juego Full Stack que hice usando JavaScript, MongoDB y Heroku</p>
                 </div>
               </div>
               <div className='column is-half-desktop is-gapless'>
                 <div className='image'>
-                  <img src='#' alt='Automatizacion'/>
-                  <button>Quiero empezar por aquí</button>
+                  <a href='https://dragon-kai-dojo.herokuapp.com/' target='_blank'>
+                    <img src={dragonKaiDojo} alt='Dragon Kai Dojo'/>
+                  </a>
                 </div>
               </div>
             </div>
@@ -104,6 +119,7 @@ const Home = (props) => {
       </div>
       <footer className='footer'>
         <section className='footer-widgets'>
+          {/*
           <div className='columns is-mobile'>
             <div className='column is-one-quarter-fullhd is-gapless'>
               <article className='widget-footer-1'>
@@ -151,12 +167,13 @@ const Home = (props) => {
               </article>
             </div>
           </div>
+          */}
           <div className='column'>
             <div className='info'>
-                <h6 className='title is-6'>copyright 2020 <a href="#">Victor izquierdo</a></h6>
-                <span>aviso legal</span>
-                <span>politica de privacidad</span>
-                <span>política de cookies</span>
+                <h6 className='title is-6'>Copyright 2020 ® <a href="#">Victor izquierdo</a></h6>
+                <span className='mx-2'>Aviso legal</span>
+                <span className='mx-2'>Politica de privacidad</span>
+                <span className='mx-2'>Política de cookies</span>
             </div>
           </div>
         </section>

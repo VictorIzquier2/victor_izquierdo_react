@@ -3,26 +3,42 @@ import React from 'react';
 const LogIn = (props) => {
   // Const {submitLogIn, loggingUser, changeHandlerLogIn} = props
   return(
-    <div>
-      <h2>Log In</h2>
-      <form onSubmit={props.submitLogIn}>
-        <label htmlFor='username'>Username: </label>
-        <input
-          type='text'
-          name='username'
-          value={props.loggingUser.username}
-          onChange={(event) => props.changeHandlerLogIn(event.target)}
-        />
-        <label htmlFor='password'>Password: </label>
-        <input
-          type='password'
-          name='password'
-          value={props.loggingUser.password}
-          onChange={(event) => props.changeHandlerLogIn(event.target)}
-        />
-        <button type='submit'>Log In</button>
+    <fieldset className='container'>
+      <br/>
+      <h4 className='title' is-4>Log In</h4>
+      <form className='form' onSubmit={props.submitLogIn}>
+        <div className='field'>
+          <div className='field-label is normal'>
+            <label className='label' htmlFor='username'>Username: </label>
+          </div>
+          <div className='control'>
+            <input
+              className='input is-small'
+              type='text'
+              name='username'
+              value={props.loggingUser.username}
+              onChange={(event) => props.changeHandlerLogIn(event.target)}
+            />
+          </div>
+        </div>
+        <div className='field'>
+          <div className='field-label is normal'>
+            <label className='label' htmlFor='password'>Password: </label>
+          </div>
+          <div className='control'>
+            <input
+              className='input is-small'
+              type='password'
+              name='password'
+              value={props.loggingUser.password}
+              onChange={(event) => props.changeHandlerLogIn(event.target)}
+            />
+          </div>
+        </div>
+        <br/>
+        <button className='button is-light' type='submit'><strong>Log In</strong></button>
       </form>
-    </div>
+    </fieldset>
   )
 }
 export default LogIn; 

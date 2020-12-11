@@ -3,9 +3,9 @@ import 'bulma/css/bulma.css';
 import './App.css';
 
 // COMPONENTS
-import Home from './components/Home';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
+import Home from './components/Home';
 import Profile from './components/Profile';
 
 // DEPENDENCIES
@@ -15,6 +15,7 @@ import UserService from './services/UserService';
 class App extends React.Component {
   state = {
     isLogged: {},
+    isAdmin: {},
     newUser: {username: '', email: '', password: ''},
     loggingUser: { username: '', password: '' },
   };
@@ -43,7 +44,8 @@ class App extends React.Component {
     this.service
       .login(this.state.loggingUser.username, this.state.loggingUser.password)
         .then(() => {
-          this.checkIfLoggedIn()
+          this.checkIfLoggedIn();
+          this.checkIfAdmin();
         })
         .catch((err) => {
           console.log('Sorry something went wrong on submit', err);
@@ -61,6 +63,13 @@ class App extends React.Component {
       })
   };
 
+  checkIfAdmin = () => {
+    this.service.isAdmin()
+      .then((result) => {
+        this.setState({isAdmin: result})
+      })
+  }
+
   logOut = () => {
     this.service.logout()
       .then((result) =>  {
@@ -72,7 +81,7 @@ class App extends React.Component {
         console.log(err);
       })
   }
-  
+
   componentDidMount() {
     this.checkIfLoggedIn();
   }
@@ -95,13 +104,16 @@ class App extends React.Component {
               </div>
               <div id='navbarBasicMenu' className='navbar-menu'>
                 <div className='navbar-start'>
-                    <Link className='navbar-item' to='/'>Home</Link>
-                  {this.state.isLogged.username && <Link className='navbar-item' to='/profile'>Profile</Link>}
+                    <Link className='navbar-item' to='/'><strong>Home</strong></Link>
+                  {this.state.isLogged.username && <Link className='navbar-item' to='/profile'><strong>Profile</strong></Link>}
                   <div className='navbar-item has-dropdown is-hoverable'>
+                    {/* 
                     <Link className='navbar-link' to='#'>
                       More
                     </Link>
+                    */}
                     <div className='navbar-dropdown'>
+                      {/*
                       <Link className='navbar-item' to='#'>
                         About
                       </Link>
@@ -115,18 +127,20 @@ class App extends React.Component {
                       <Link className='navbar-item' to='#'>
                         Report an issue
                       </Link>
+                      */}
                     </div>
                   </div>
                 </div>
                 <div className='navbar-end'>
                   <div className='navbar-item'>
                     <div className='buttons'>
-                      <strong>
+                      <strong className='mx-2'>
                         {!this.state.isLogged.username && <Link className='button is-primary' to='/signup'>Sign Up</Link>}
                       </strong>
-                      <strong>
+                      <strong className='mx-2'>
                         {!this.state.isLogged.username && <Link className='button is-light' to='/login'>Log In</Link>}
                       </strong>
+                      {this.state.isLogged.username && <button className='button is-light is-small' onClick={() => this.logOut()}><strong>Log Out</strong></button>}
                     </div>
                   </div>
                 </div>
@@ -134,7 +148,7 @@ class App extends React.Component {
             </nav>
           </header>
         </div>
-
+        
         <Switch>
           <Route 
             exact 
@@ -173,6 +187,9 @@ class App extends React.Component {
             path='/profile'
             render={() => (
               <Profile
+                logOut={this.logOut}
+                isLogged={this.state.isLogged}
+                isAdmin={this.state.isAdmin}
               />
             )}
           />

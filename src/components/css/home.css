@@ -1,0 +1,28 @@
+.info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center!important;
+  align-items: center!important;
+}
+.sky-blue{
+  background-color: #e8f9fd;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+.sky-blue .columns .column {
+  padding-right: 0;
+  padding-bottom: 0;
+}
+.lake-blue {
+  background-color: #299ac1;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+}
+.lake-blue > h5 {
+  color: white;
+}
+.lake-blue > h3,
+.lake-blue > p strong {
+  color: whitesmoke;
+}
+

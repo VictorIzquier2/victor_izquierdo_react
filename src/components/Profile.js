@@ -10,16 +10,21 @@ import UserService from '../services/ExperienceService';
 
 class Profile extends React.Component {
 
-  state = {
-    experience: {
-      cargo: '',
-      empleo: '',
-      empresa: '',
-      ubicacion: '',
-      descripcion: ''
-    },
-    experiencesFromDB: 0
+  constructor(props){
+    super(props);
+      this.state = {
+        experience: {
+          cargo: '',
+          empleo: '',
+          empresa: '',
+          ubicacion: '',
+          descripcion: ''
+        },
+        experiencesFromDB: 0
+    }
+
   }
+
 
   service = new UserService();
 
@@ -135,12 +140,15 @@ class Profile extends React.Component {
   render(){
     return(
       <div className='Profile'>
-        <ExperienceForm
-          submitNewExperience={this.submitNewExperience}
-          experience={this.state.experience}
-          changeHandler={this.changeHandler}
-          handleFileUpload={this.handleFileUpload}
-         />
+          {this.props.isAdmin && 
+            <ExperienceForm
+              submitNewExperience={this.submitNewExperience}
+              experience={this.state.experience}
+              changeHandler={this.changeHandler}
+              handleFileUpload={this.handleFileUpload}
+            />
+          }
+
         <div className='container is-widescreen is-full'>
           <div className='columns is-full'>
             {this.state.experiencesFromDB && this.experiencia()}

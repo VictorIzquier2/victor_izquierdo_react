@@ -5,6 +5,7 @@ import './css/ExperienceForm.css'
 const ExperienceForm = (props) => {
   return(
     <fieldset className='container'>
+      <br/>
       <h4 className='title is-4'>Añadir</h4>
       <p className='subtitle is-6'>Nueva experiencia</p>
       {/*<form onSubmit={this.submitForm}>*/}
@@ -82,7 +83,7 @@ const ExperienceForm = (props) => {
             </div>
             <div className='field'>
               <div className='field is-normal'>
-                <label className='label' htmlFor='imageUrl'>Descripcion </label>
+                <label className='label' htmlFor='imageUrl'>Imagen </label>
               </div>
               <div className='control'>
                 <input

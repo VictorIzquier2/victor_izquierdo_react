@@ -8,3 +8,8 @@ form {
   width: 20rem;
   margin:0 1rem;
 }
+
+.control > textarea {
+  width: 18rem;
+  left: -1rem;
+}
