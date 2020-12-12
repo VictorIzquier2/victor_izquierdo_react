@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import 'bulma/css/bulma.css'
 
 // COMPONENTS
@@ -8,7 +8,7 @@ import ExperienceForm from './ExperienceForm';
 //import { Link, Route, Redirect, Switch } from 'react-router-dom';
 import UserService from '../services/ExperienceService';
 
-class Profile extends React.Component {
+class Profile extends Component {
 
   constructor(props){
     super(props);
@@ -109,7 +109,7 @@ class Profile extends React.Component {
           console.log("Error while uploading the file: ", err);
       });
     }
-
+    
   experiencia = () => {
     return this.state.experiencesFromDB.map((item)=>{
       return (
@@ -118,7 +118,7 @@ class Profile extends React.Component {
             <article className='media'>
               <div className='media-left'>
                 <figure className='image is-64x64'>
-                  <img src={item.imageUrl}/>
+                  <img src={item.imageUrl} alt='Victor Izquierdo'/>
                 </figure>
               </div>
               <div className='media-content'>

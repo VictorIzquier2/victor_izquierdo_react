@@ -10,13 +10,28 @@
   padding-bottom: 0;
 }
 .sky-blue .columns .column {
+  margin-right: 0;
   padding-right: 0;
   padding-bottom: 0;
+}
+.container .columns .ml-is-0 .is-mobile {
+  margin-left: 0!important;
 }
 .lake-blue {
   background-color: #299ac1;
   padding: 1rem 2rem;
   border-radius: 0.5rem;
+}
+@media(max-width: 640px){
+  .lake-blue > p strong {
+    display: none;
+  }
+}
+@media(max-width: 480px){
+  .lake-blue > h3 {
+    display: none;
+  }
+
 }
 .lake-blue > h5 {
   color: white;
