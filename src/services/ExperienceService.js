@@ -23,9 +23,8 @@ class ExperienceService {
     .catch(this.errorHandler);
   }
   
-  saveNewThing (newThing) {
-    // console.log('new thing is: ', newThing)
-    return this.service.post('/profile/addExperience', newThing)
+  saveNewExperience (newExperience) {
+    return this.service.post('/profile/addExperience', newExperience)
       .then(res => res.data)
       .catch(this.errorHandler);
   }
@@ -34,17 +33,6 @@ class ExperienceService {
       .then(response => response.data);
   }
   
-  //newExperience = (cargo, empleo, empresa, ubicacion, descripcion) => {
-    //return this.service.post('/profile/addExperience', {cargo, empleo, empresa, ubicacion, descripcion})
-      //.then((response) => {
-        //console.log(response.data);
-        //return response.data
-      //})
-      //.catch((err) => {
-        //console.log(err);
-      //})
-  //}
-
   deleteExperience = (id) => {
     console.log(id);
     return this.service.post('/profile/experiences/delete', {id})

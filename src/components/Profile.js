@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css'
-
+import Experiences from './Experiences';
 // COMPONENTS
 import ExperienceForm from './ExperienceForm';
 
@@ -25,10 +25,8 @@ class Profile extends Component {
 
   }
 
-
   service = new UserService();
 
-  
   getExperiencesFromDB = () => {
     return this.service.getExperiences()
     .then((response) =>{
@@ -71,16 +69,8 @@ class Profile extends Component {
   
   submitNewExperience = (e) => {
    e.preventDefault();
-   //this.service.newExperience(this.state.experience.cargo, this.state.experience.empleo, this.state.experience.empresa, this.state.experience.ubicacion, this.state.experience.descripcion)
-   //.then((result) => {
-     //console.log(result);
-     //this.getExperiencesFromDB();
-    //})
-    //.catch((err) => {
-      //console.log(err)
-    //})
 
-    this.service.saveNewThing(this.state.experience)
+    this.service.saveNewExperience(this.state.experience)
       .then(res => {
           console.log('added: ', res);
           // here you would redirect to some other page 
@@ -92,8 +82,7 @@ class Profile extends Component {
   }
 
   changeHandler = (e) => {
-    //console.log(_eventTarget.name)
-    //this.setState({experience: {...this.state.experience, [_eventTarget.name]: _eventTarget.value}})
+
     const { name, value } = e.target;
     this.setState({ experience: { ...this.state.experience, [name]: value } })
   }
@@ -109,38 +98,11 @@ class Profile extends Component {
           console.log("Error while uploading the file: ", err);
       });
     }
-    
-  experiencia = () => {
-    return this.state.experiencesFromDB.map((item)=>{
-      return (
-          <div className='column is-half'>
-            <div className='box'>
-            <article className='media'>
-              <div className='media-left'>
-                <figure className='image is-64x64'>
-                  <img src={item.imageUrl} alt='Victor Izquierdo'/>
-                </figure>
-              </div>
-              <div className='media-content'>
-                  <p><strong>{item.cargo}</strong> <small>{item.empleo} en {item.empresa}</small></p>
-                  <p>{item.descripcion}</p>
-                  <p><small>{item.ubicacion}</small></p>
-                <form onSubmit={(event)=>this.deleteExperiencesFromDB(event, item._id)}
-                >
-                    <button type='submit'>Delete</button>
-                </form>                
-              </div>
-            </article>
-            </div>
-          </div>
-      )
-    })
-  }
   
   render(){
     return(
       <div className='Profile'>
-          {this.props.isAdmin && 
+          {this.props.isAdmin.username && 
             <ExperienceForm
               submitNewExperience={this.submitNewExperience}
               experience={this.state.experience}
@@ -151,7 +113,12 @@ class Profile extends Component {
 
         <div className='container is-widescreen is-full'>
           <div className='columns is-full'>
-            {this.state.experiencesFromDB && this.experiencia()}
+            {this.state.experiencesFromDB && 
+            <Experiences
+              experiencesFromDB={this.state.experiencesFromDB}
+              deleteExperiencesFromDB={this.deleteExperiencesFromDB}
+            />
+            }
           </div>
         </div>
 

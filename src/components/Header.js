@@ -148,50 +148,50 @@ class Header extends Component {
               </div>
             </nav>
             <Switch>
-          <Route 
-            exact 
-            path='/' 
-            render={() => <Home 
-                            logOut={this.logOut} 
-                            isLogged={this.state.isLogged}
-                          />
-            }
-          />
-          <Route
-            exact
-            path='/signup'
-            render={() => (
-              !this.state.isLogged.username
-              ? <SignUp 
-                  submitSignUp={this.submitSignUp}
-                  newUser={this.state.newUser}
-                  changeHandlerSignUp={this.changeHandlerSignUp}
-                />
-              : <Redirect to='/' />
-            )}
-          />
-          <Route
-            path='/login'
-            render={() => (
-              <LogIn
-                submitLogIn={this.submitLogIn}
-                loggingUser={this.state.loggingUser}
-                changeHandlerLogIn={this.changeHandlerLogIn}
+              <Route 
+                exact 
+                path='/' 
+                render={() => <Home 
+                                logOut={this.logOut} 
+                                isLogged={this.state.isLogged}
+                              />
+                }
               />
-            )}
-          />
-           <Route
-           exact
-            path='/profile'
-            render={() => (
-              <Profile
-                logOut={this.logOut}
-                isLogged={this.state.isLogged}
-                isAdmin={this.state.isAdmin}
+              <Route
+                exact
+                path='/signup'
+                render={() => (
+                  !this.state.isLogged.username
+                  ? <SignUp 
+                      submitSignUp={this.submitSignUp}
+                      newUser={this.state.newUser}
+                      changeHandlerSignUp={this.changeHandlerSignUp}
+                    />
+                  : <Redirect to='/' />
+                )}
               />
-            )}
-          />
-        </Switch>
+              <Route
+                path='/login'
+                render={() => (
+                  <LogIn
+                    submitLogIn={this.submitLogIn}
+                    loggingUser={this.state.loggingUser}
+                    changeHandlerLogIn={this.changeHandlerLogIn}
+                  />
+                )}
+              />
+                <Route
+                exact
+                path='/profile'
+                render={() => (
+                  <Profile
+                    logOut={this.logOut}
+                    isLogged={this.state.isLogged}
+                    isAdmin={this.state.isAdmin}
+                  />
+                )}
+              />
+            </Switch>
           </header>
           
     )

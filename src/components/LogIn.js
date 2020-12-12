@@ -5,7 +5,7 @@ const LogIn = (props) => {
   return(
     <fieldset className='container'>
       <br/>
-      <h4 className='title' is-4>Log In</h4>
+      <h4 className='title is-4'>Log In</h4>
       <form className='form' onSubmit={props.submitLogIn}>
         <div className='field'>
           <div className='field-label is normal'>
