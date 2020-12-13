@@ -1,0 +1,28 @@
+.strengths{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.experiences {
+  display: flex;
+  flex-direction: column!important;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.experiences > .title{
+  text-transform: uppercase;
+}
+.educations {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.educations > .title{
+  text-transform: uppercase;
+}

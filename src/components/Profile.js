@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css';
 import './assets/css/Globals.css';
+import './assets/css/Profile.css';
 
 // COMPONENTS
 import ExperienceForm from './ExperienceForm';
-import Experiences from './Experiences';
+import EducationForm from './EducationForm';
+import Experience from './Experience';
+import Education from './Education';
 
 // DEPENDENCIES
 //import { Link, Route, Redirect, Switch } from 'react-router-dom';
-import UserService from '../services/ExperienceService';
+import UserService from '../services/UserService';
+import ExperienceService from '../services/ExperienceService';
+import EducationService from '../services/EducationService';
 
 class Profile extends Component {
 
@@ -22,19 +27,28 @@ class Profile extends Component {
           ubicacion: '',
           descripcion: ''
         },
-        experiencesFromDB: 0
+        experiencesFromDB: 0,
+        education: {
+          centro: '',
+          titulo: '',
+          disciplina: '',
+          ubicacion: '',
+          descripcion: '',
+        },
+        educationsFromDB: 0
     }
-
+    
   }
 
-  service = new UserService();
+  UserService = new UserService();
+  ExperienceService = new ExperienceService();
+  EducationService = new EducationService();
 
   getExperiencesFromDB = () => {
-    return this.service.getExperiences()
+    return this.ExperienceService.getExperiences()
     .then((response) =>{
       console.log(response)
       this.setState({experiencesFromDB: response})
-      console.log(this.state.experiencesFromDB);
     })
     .catch((err) => {
       console.log(err);
@@ -43,56 +57,56 @@ class Profile extends Component {
 
   deleteExperiencesFromDB = (event, id) => {
     event.preventDefault();
-    this.service.deleteExperience(id)
+    this.ExperienceService.deleteExperience(id)
       .then(() => {
-        this.service.getExperiences()
+        this.ExperienceService.getExperiences()
           .then((response)=> {
-             this.setState({experiencesFromDB: response})
-          })          
+            this.setState({experiencesFromDB: response})
+          })   
+          .catch((err) => {
+            console.log(err);
+          })       
       })
       .catch((err) => {
         console.log(err);
       })
   }
-
+    
   getAllExperiences = () => {
     this.getExperiencesFromDB()
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
-
-  componentDidMount(){
-    this.getAllExperiences();
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
   
   submitNewExperience = (e) => {
-   e.preventDefault();
-
-    this.service.saveNewExperience(this.state.experience)
-      .then(res => {
-          console.log('added: ', res);
-          // here you would redirect to some other page 
-      })
-      .catch(err => {
-          console.log("Error while adding the thing: ", err);
-      });
-
+    e.preventDefault();
+    
+    this.ExperienceService.saveNewExperience(this.state.experience)
+    .then(res => {
+      console.log('added: ', res);
+      res
+      .redirect('profile');
+    })
+    .catch(err => {
+      console.log("Error while adding the new Experience: ", err);
+    });
+    
   }
-
-  changeHandler = (e) => {
-
+  
+  changeHandlerExperience = (e) => {
+    
     const { name, value } = e.target;
     this.setState({ experience: { ...this.state.experience, [name]: value } })
   }
 
-  handleFileUpload = e => {
+  handleFileUploadExperience = e => {
     const uploadData = new FormData();
     uploadData.append("imageUrl", e.target.files[0]);
-    this.service.handleUpload(uploadData)
+    this.ExperienceService.handleUpload(uploadData)
       .then(response => {
           return this.setState({ experience: { ...this.state.experience, imageUrl: response.secure_url } });
       })
@@ -100,6 +114,83 @@ class Profile extends Component {
           console.log("Error while uploading the file: ", err);
       });
     }
+
+    getEducationsFromDB = () => {
+      return this.EducationService.getEducations()
+        .then((response) => {
+          this.setState({educationsFromDB: response})
+          console.log(this.state.educationsFromDB);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+
+    deleteEducationsFromDB = (event, id) => {
+      event.preventDefault();
+      this.EducationService.deleteEducations(id)
+        .then(() => {
+          this.EducationService.getEducations()
+            .then((response) => {
+              this.setState({educationsFromDB: response})
+            })
+            .catch((err) => {
+              console.log(err);
+            })
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+
+    getAllEducations = () => {
+      this.getEducationsFromDB()
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+
+    submitNewEducation = (e) => {
+      e.preventDefault();
+  
+      this.EducationService.saveNewEducation(this.state.education)
+        .then(res => {
+          console.log('Added: ', res);
+          res
+            .redirect('profile');
+        })
+        .catch(err => {
+          console.log("Error while adding the new Education", err);
+        });
+    }
+  
+    changeHandlerEducation = (e) => {
+      const { name, value } = e.target;
+      this.setState({ education: {...this.state.education, [name]: value}})
+    }
+  
+    handleFileUploadEducation = e => {
+      const uploadData = new FormData();
+      uploadData.append("imageUrl", e.target.files[0]);
+      this.EducationService.handleUpload(uploadData)
+        .then(response => {
+            return this.setState({ education: { ...this.state.education, imageUrl: response.secure_url } });
+        })
+        .catch(err => {
+            console.log("Error while uploading the file: ", err);
+        });
+      }
+  
+  componentDidMount(){
+    this.UserService.loggedin(this.props.isLogged._id)
+      .then((response) =>{
+        this.getAllExperiences();
+        this.getAllEducations();
+      })
+  }
   
   render(){
     return(
@@ -108,22 +199,65 @@ class Profile extends Component {
             <ExperienceForm
               submitNewExperience={this.submitNewExperience}
               experience={this.state.experience}
-              changeHandler={this.changeHandler}
-              handleFileUpload={this.handleFileUpload}
+              changeHandlerExperience={this.changeHandlerExperience}
+              handleFileUploadExperience={this.handleFileUploadExperience}
+            />
+          }
+          {this.props.isAdmin.username && 
+            <EducationForm
+              submitNewEducation={this.submitNewEducation}
+              education={this.state.education}
+              changeHandlerEducation={this.changeHandlerEducation}
+              handleFileUploadEducation={this.handleFileUploadEducation}
             />
           }
 
         <div className='container is-widescreen is-full'>
-          <div className='columns is-full'>
-            {this.state.experiencesFromDB && 
-            <Experiences
-              experiencesFromDB={this.state.experiencesFromDB}
-              deleteExperiencesFromDB={this.deleteExperiencesFromDB}
-            />
-            }
+          <div className='strengths'>
+            <br/>
+            <div className='experiences'>
+              <h3 className='title is-3'>Experiencias</h3>
+              <div className='column is-half'>
+                <div className='box'>
+                  {this.state.experiencesFromDB &&
+                    this.state.experiencesFromDB.map((item, i) => {
+                      return(
+                        <Experience
+                          key={i}
+                          item={item}
+                          isAdmin={this.props.isAdmin.username}
+                          deleteExperiencesFromDB={this.deleteExperiencesFromDB}
+                        />
+                      )
+                    })
+                  }
+                </div>
+              </div>
+              <br/>
+            </div>
+            <br/>
+            <div className='educations'>
+              <h3 className='title is-3'>Aprendizajes</h3>
+              <div className='columns is-half'>
+                <div className='box'>
+                  {this.state.educationsFromDB &&
+                    this.state.educationsFromDB.map((item, i) => {
+                      return(
+                        <Education
+                          key={i}
+                          item={item}
+                          isAdmin={this.props.isAdmin.username}
+                          deleteEducationsFromDB={this.deleteEducationsFromDB}
+                        />
+                      )
+                    })
+                  }
+                </div>
+              </div>
+            </div>
+            <br/>
           </div>
         </div>
-
       </div>
     )
   }

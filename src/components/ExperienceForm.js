@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bulma/css/bulma.css';
 import './assets/css/Globals.css';
-import './assets/css/ExperienceForm.css'
+import './assets/css/ExperienceForm.css';
 
 const ExperienceForm = (props) => {
   return(
@@ -9,21 +9,20 @@ const ExperienceForm = (props) => {
       <br/>
       <h4 className='title is-4'>Añadir</h4>
       <p className='subtitle is-6'>Nueva experiencia</p>
-      {/*<form onSubmit={this.submitForm}>*/}
       <form className='form' onSubmit={(e)=>props.submitNewExperience(e)}>
         <div className='columns is-full'>
           <div className='column is-half'>
             <div className='field is-horizontal'>
               <div className='field-label is-normal'>
-              <label className='label' htmlFor='cargo'>Cargo</label>
+                <label className='label' htmlFor='cargo'>Cargo</label>
               </div>
               <div className='control'>
                 <input
                   className='input is-small is-20'
                   type='text' 
                   name='cargo' 
-                  //value={props.experience.cargo} 
-                  onChange={(e) => props.changeHandler(e)}/>
+                  onChange={(e) => props.changeHandlerExperience(e)}
+                />
               </div>
             </div>
             <div className='field is-horizontal'>
@@ -35,8 +34,8 @@ const ExperienceForm = (props) => {
                   className='input is-small is-20'
                   type='text' 
                   name='empleo' 
-                  //value={props.experience.empleo} 
-                  onChange={(e) => props.changeHandler(e)} />
+                  onChange={(e) => props.changeHandlerExperience(e)}
+                />
               </div>
             </div>
           </div>
@@ -50,8 +49,8 @@ const ExperienceForm = (props) => {
                 className='input is-small is-20'
                 type='text' 
                 name='empresa' 
-                //value={props.experience.empresa} 
-                onChange={(e) => props.changeHandler(e)} />
+                onChange={(e) => props.changeHandlerExperience(e)}
+              />
               </div>
             </div>
             <div className='field is-horizontal'>
@@ -63,8 +62,8 @@ const ExperienceForm = (props) => {
                   className='input is-small is-20'
                   type='text' 
                   name='ubicacion' 
-                  //value={props.experience.ubicacion} 
-                  onChange={(e) => props.changeHandler(e)} />
+                  onChange={(e) => props.changeHandlerExperience(e)}
+                />
               </div>
             </div>
           </div>
@@ -78,27 +77,28 @@ const ExperienceForm = (props) => {
                   className='input textarea is-small is-20'
                   type='text' 
                   name='descripcion' 
-                  //value={props.experience.descripcion} 
-                  onChange={(e) => props.changeHandler(e)} />
+                  onChange={(e) => props.changeHandlerExperience(e)}
+                />
               </div>
             </div>
             <div className='field'>
               <div className='field is-normal'>
                 <label className='label' htmlFor='imageUrl'>Imagen </label>
               </div>
-              <div className='control'>
-                <input
-                  className='input is-small is-20'
-                  type='file' 
-                  name='imageUrl' 
-                  onChange={(e) => props.handleFileUpload(e)} />
-              </div>
+            <div className='control'>
+              <input
+                className='input is-small is-20'
+                type='file' 
+                name='imageUrl' 
+                onChange={(e) => props.handleFileUploadExperience(e)}
+              />
             </div>
-          <button type='submit'>Enviar</button>
-          <div className='field'>
-            <br/>
           </div>
-        </form>
+        <button type='submit'>Publicar</button>
+        <div className='field'>
+          <br/>
+        </div>
+      </form>
     </fieldset>
   )
 }

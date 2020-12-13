@@ -12,13 +12,14 @@ import dragonKaiDojo from './assets/images/dragonKaiDojo.png';
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
+  
+  //constructor(props){
+    //super(props);
+    //this.state = {
     
-    }
-
-  }
+    //}
+    
+  //}
 
   render(){
     return(
