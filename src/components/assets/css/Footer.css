@@ -1,0 +1,8 @@
+/* FOOTER */
+
+.footer{
+  background-color: var(--lake-blue);
+}
+.footer .info{
+  color: white;
+}

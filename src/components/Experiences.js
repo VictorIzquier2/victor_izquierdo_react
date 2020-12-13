@@ -1,4 +1,6 @@
 import React from 'react';
+import 'bulma/css/bulma.css';
+import './assets/css/Globals.css';
 
 const Experiences = (props) => { 
   return props.experiencesFromDB.map((item)=>{

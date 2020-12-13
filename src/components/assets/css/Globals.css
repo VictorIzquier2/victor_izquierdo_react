@@ -1,0 +1,30 @@
+/* GLOBALS */
+
+:root {
+  --sky-blue: #e8f9fd;
+  --lake-blue: #299ac1;
+  --sand-orange: #f5a340;
+  --burdeaux-red: #dc323c;
+  --sixties-green: #8ab45d;
+  --text-grey: #4a4a4a;
+}
+
+.is-lake{
+  color: var(--lake-blue);
+}
+.is-skyblue{
+  color: var(--sky-blue);
+}
+.is-sand{
+  color: var(--sand-orange);
+}
+.is-burdeaux{
+  color: var(--burdeaux-red);
+}
+.is-sixties{
+  color: var(--sixties-green);
+}
+
+a{
+  color: var(--text-grey);
+}

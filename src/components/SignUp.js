@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bulma/css/bulma.css';
+import './assets/css/Globals.css';
 
 const SignUp = (props) => {
   // const {submitSignUp, newUser, changeHandlerSignUp} = props
@@ -53,6 +54,7 @@ const SignUp = (props) => {
         <br/>
         <button className='button is-primary' type='submit'><strong>Sign Up</strong></button>
       </form>
+      <br/>
     </fieldset>
   )
 }

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import 'bulma/css/bulma.css'
-import Experiences from './Experiences';
+import 'bulma/css/bulma.css';
+import './assets/css/Globals.css';
+
 // COMPONENTS
 import ExperienceForm from './ExperienceForm';
+import Experiences from './Experiences';
 
 // DEPENDENCIES
 //import { Link, Route, Redirect, Switch } from 'react-router-dom';

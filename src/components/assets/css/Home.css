@@ -1,3 +1,5 @@
+/* HOME */
+
 .info{
   display: flex;
   flex-direction: column;
@@ -5,7 +7,7 @@
   align-items: center!important;
 }
 .sky-blue{
-  background-color: #e8f9fd;
+  background-color: var(--sky-blue);
   padding-right: 0;
   padding-bottom: 0;
 }
@@ -18,7 +20,7 @@
   margin-left: 0!important;
 }
 .lake-blue {
-  background-color: #299ac1;
+  background-color: var(--lake-blue);
   padding: 1rem 2rem;
   border-radius: 0.5rem;
 }
@@ -41,3 +43,13 @@
   color: whitesmoke;
 }
 
+.sixties-green {
+  background-color: var(--sixties-green);
+  font-weight: bolder;
+  color: white;
+  border: none;
+}
+.sixties-green:hover {
+  background-color: var(--sixties-green);
+  color: white;
+}

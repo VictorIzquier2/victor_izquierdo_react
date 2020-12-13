@@ -1,4 +1,6 @@
 import React from 'react';
+import 'bulma/css/bulma.css';
+import './assets/css/Globals.css';
 
 const LogIn = (props) => {
   // Const {submitLogIn, loggingUser, changeHandlerLogIn} = props
@@ -38,6 +40,7 @@ const LogIn = (props) => {
         <br/>
         <button className='button is-light' type='submit'><strong>Log In</strong></button>
       </form>
+      <br/>
     </fieldset>
   )
 }

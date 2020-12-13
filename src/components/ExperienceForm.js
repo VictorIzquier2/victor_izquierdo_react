@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bulma/css/bulma.css';
+import './assets/css/Globals.css';
 import './assets/css/ExperienceForm.css'
 
 const ExperienceForm = (props) => {

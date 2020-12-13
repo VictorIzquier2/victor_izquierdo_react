@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css';
+import './assets/css/Globals.css';
 import './assets/css/Header.css';
-
+import logo from './assets/images/victor-izquierdo-logo-oficial.svg'
 // COMPONENTS
 import SignUp from './SignUp';
 import LogIn from './LogIn';
@@ -95,7 +96,7 @@ class Header extends Component {
             <nav className='navbar is-light' role='navigation' aria-label='main navigation'>
               <div className='navbar-brand'>
                 <Link className='navbar-item' to='/'>
-                  <img src="https://bulma.io/images/bulma-logo.png" alt='bulma' width="112" height="28"/>
+                  <img src={logo} alt='bulma' width="112" height="28"/>
                 </Link>
                 <button className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicMenu">
                   <span aria-hidden='true'></span>
