@@ -85,9 +85,10 @@ class Header extends Component {
         console.log(err);
       })
   }
-
+  
   componentDidMount() {
     this.checkIfLoggedIn();
+    this.checkIfAdmin();
   }
   
   render(){
