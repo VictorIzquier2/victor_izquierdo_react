@@ -35,7 +35,7 @@ class ExperienceService {
   
   deleteExperience = (id) => {
     console.log(id);
-    return this.service.post('/profile/experiences/delete', {id})
+    return this.service.get(`/profile/experiences/delete/${id}`)
       .then((response) => {
         console.log(response.data)
         return response.data

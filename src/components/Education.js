@@ -4,10 +4,10 @@ import './assets/css/Globals.css';
 
 const Education = (props) => { 
     return (
-      <article id={'education' + props.key} className='media'>
+      <article className='media'>
         <div className='media-left'>
           <figure className='image is-64x64'>
-            <img src={props.item.imageUrl} alt={'Education' + props.key}/>
+            <img src={props.item.imageUrl} alt='Education'/>
           </figure>
         </div>
         <div className='media-content'>
@@ -16,7 +16,7 @@ const Education = (props) => {
           <br/>
           <p><small><strong>{props.item.ubicacion}</strong></small></p>  
           {props.isAdmin &&
-            <form onSubmit={(event)=>props.deleteExperiencesFromDB(event, props.item._id)}>
+            <form onSubmit={(event)=>props.deleteEducationsFromDB(event, props.item._id)}>
               <br/>
               <button className='button is-danger' type='submit'>Delete</button>
             </form>

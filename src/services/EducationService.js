@@ -32,10 +32,10 @@ class EducationService {
     return this.service.get('/profile/educations')
       .then(response => response.data);
   }
-
+  
   deleteEducation = (id) => {
     console.log(id);
-    return this.service.post('/profile/educations/delete', {id})
+    return this.service.get(`/profile/educations/delete/${id}`)
       .then((response) => {
         console.log(response.data)
         return response.data;

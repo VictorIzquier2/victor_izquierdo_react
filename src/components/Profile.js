@@ -59,16 +59,10 @@ class Profile extends Component {
     event.preventDefault();
     this.ExperienceService.deleteExperience(id)
       .then(() => {
-        this.ExperienceService.getExperiences()
-          .then((response)=> {
-            this.setState({experiencesFromDB: response})
-          })   
-          .catch((err) => {
-            console.log(err);
-          })       
-      })
+        this.getAllExperiences();
+      })   
       .catch((err) => {
-        console.log(err);
+        console.log(err)
       })
   }
     
@@ -88,8 +82,7 @@ class Profile extends Component {
     this.ExperienceService.saveNewExperience(this.state.experience)
     .then(res => {
       console.log('added: ', res);
-      res
-      .redirect('profile');
+      this.getExperiencesFromDB();
     })
     .catch(err => {
       console.log("Error while adding the new Experience: ", err);
@@ -128,15 +121,9 @@ class Profile extends Component {
 
     deleteEducationsFromDB = (event, id) => {
       event.preventDefault();
-      this.EducationService.deleteEducations(id)
+      this.EducationService.deleteEducation(id)
         .then(() => {
-          this.EducationService.getEducations()
-            .then((response) => {
-              this.setState({educationsFromDB: response})
-            })
-            .catch((err) => {
-              console.log(err);
-            })
+          this.getAllEducations();
         })
         .catch((err) => {
           console.log(err);
@@ -159,8 +146,7 @@ class Profile extends Component {
       this.EducationService.saveNewEducation(this.state.education)
         .then(res => {
           console.log('Added: ', res);
-          res
-            .redirect('profile');
+          this.getEducationsFromDB();
         })
         .catch(err => {
           console.log("Error while adding the new Education", err);
@@ -186,7 +172,7 @@ class Profile extends Component {
   
   componentDidMount(){
     this.UserService.loggedin(this.props.isLogged._id)
-      .then((response) =>{
+      .then(() =>{
         this.getAllExperiences();
         this.getAllEducations();
       })
@@ -238,7 +224,7 @@ class Profile extends Component {
             <br/>
             <div className='educations'>
               <h3 className='title is-3'>Aprendizajes</h3>
-              <div className='columns is-half'>
+              <div className='column is-half'>
                 <div className='box'>
                   {this.state.educationsFromDB &&
                     this.state.educationsFromDB.map((item, i) => {
