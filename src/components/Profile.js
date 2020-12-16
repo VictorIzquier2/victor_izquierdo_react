@@ -83,9 +83,8 @@ class Profile extends Component {
         .then((res) => {
           console.log('added: ', res);
           this.setState({experiencesFromDB: res})
-            .then(()=>{
-              this.getExperiencesFromDB();
-            })
+          this.getExperiencesFromDB();
+
         })
         .catch(err => {
           console.log("Error while adding the new Experience: ", err);
@@ -150,9 +149,7 @@ class Profile extends Component {
         .then((res) => {
             console.log('Added: ', res);
             this.setState({educationsFromDB: res})
-              .then(() => {
-                this.getEducationsFromDB();
-              })
+            this.getEducationsFromDB();
           })
           .catch(err => {
             console.log("Error while adding the new Education", err);
