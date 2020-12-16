@@ -44,7 +44,6 @@ class Header extends Component {
   
   //LOGIN CONFIG
   submitLogIn = (event) => {
-    console.log(1);
     event.preventDefault();
     this.service
       .login(this.state.loggingUser.username, this.state.loggingUser.password)

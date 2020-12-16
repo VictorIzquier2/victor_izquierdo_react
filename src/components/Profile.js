@@ -78,15 +78,18 @@ class Profile extends Component {
   
   submitNewExperience = (e) => {
     e.preventDefault();
-    console.log(this.state.experience);
-    this.ExperienceService.saveNewExperience(this.state.experience, this.props.isLogged._id)
-    .then((res) => {
-      console.log('added: ', res);
-      this.getExperiencesFromDB();
-    })
-    .catch(err => {
-      console.log("Error while adding the new Experience: ", err);
-    });
+    this.ExperienceService
+      .saveNewExperience(this.state.experience, this.props.isLogged._id)
+        .then((res) => {
+          console.log('added: ', res);
+          this.setState({experiencesFromDB: res})
+            .then(()=>{
+              this.getExperiencesFromDB();
+            })
+        })
+        .catch(err => {
+          console.log("Error while adding the new Experience: ", err);
+        });
     
   }
   
@@ -142,14 +145,18 @@ class Profile extends Component {
 
     submitNewEducation = (e) => {
       e.preventDefault();
-      this.EducationService.saveNewEducation(this.state.education, this.props.isLogged._id)
-      .then((res) => {
-          console.log('Added: ', res);
-          this.getEducationsFromDB();
-        })
-        .catch(err => {
-          console.log("Error while adding the new Education", err);
-        });
+      this.EducationService
+      .saveNewEducation(this.state.education, this.props.isLogged._id)
+        .then((res) => {
+            console.log('Added: ', res);
+            this.setState({educationsFromDB: res})
+              .then(() => {
+                this.getEducationsFromDB();
+              })
+          })
+          .catch(err => {
+            console.log("Error while adding the new Education", err);
+          });
     }
   
     changeHandlerEducation = (e) => {
