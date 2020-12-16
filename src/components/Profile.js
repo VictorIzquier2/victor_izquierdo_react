@@ -86,6 +86,7 @@ class Profile extends Component {
     })
     .catch(err => {
       console.log("Error while adding the new Experience: ", err);
+      console.log(this.props.isLogged._id);
     });
     
   }
