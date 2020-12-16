@@ -21,10 +21,13 @@ class EducationService {
     })
     .catch(this.errorHandler);
   }
-
-  saveNewEducation (newEducation) {
-    return this.service.post('/profile/addEducation', newEducation)
-      .then(res => res.data)
+  
+  saveNewEducation (newEducation, id) {
+    return this.service.post('/profile/addEducation', {newEducation, id})
+      .then((res) => {
+        console.log(res.data);
+        return res.data;
+      })
       .catch(this.errorHandler);
   }
   

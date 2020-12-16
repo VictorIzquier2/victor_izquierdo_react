@@ -86,7 +86,6 @@ class Profile extends Component {
     })
     .catch(err => {
       console.log("Error while adding the new Experience: ", err);
-      console.log(this.props.isLogged._id);
     });
     
   }
@@ -112,8 +111,8 @@ class Profile extends Component {
     getEducationsFromDB = () => {
       return this.EducationService.getEducations()
         .then((response) => {
-          this.setState({educationsFromDB: response})
-          console.log(this.state.educationsFromDB);
+          console.log(response);
+          this.setState({educationsFromDB: response});
         })
         .catch((err) => {
           console.log(err);
@@ -143,10 +142,8 @@ class Profile extends Component {
 
     submitNewEducation = (e) => {
       e.preventDefault();
-      console.log(1);
-      this.EducationService.saveNewEducation(this.state.education)
-      .then(res => {
-          console.log(2);
+      this.EducationService.saveNewEducation(this.state.education, this.props.isLogged._id)
+      .then((res) => {
           console.log('Added: ', res);
           this.getEducationsFromDB();
         })
