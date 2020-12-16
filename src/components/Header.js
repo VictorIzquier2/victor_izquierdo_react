@@ -41,13 +41,15 @@ class Header extends Component {
   changeHandlerSignUp = (_eventTarget) => {
     this.setState({newUser: {...this.state.newUser, [_eventTarget.name]: _eventTarget.value}});
   };
-
+  
   //LOGIN CONFIG
   submitLogIn = (event) => {
+    console.log(1);
     event.preventDefault();
     this.service
       .login(this.state.loggingUser.username, this.state.loggingUser.password)
-        .then(() => {
+        .then((response) => {
+          console.log(response)
           this.checkIfLoggedIn();
           this.checkIfAdmin();
         })
