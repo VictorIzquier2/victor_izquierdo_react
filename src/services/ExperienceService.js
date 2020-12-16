@@ -25,7 +25,10 @@ class ExperienceService {
   
   saveNewExperience (newExperience, id) {
     return this.service.post('/profile/addExperience', { ...newExperience, ...id })
-      .then(res => res.data)
+      .then((res) => {
+        console.log(res.data);
+        res.data
+      })
       .catch(this.errorHandler);
   }
   getExperiences = () => {
