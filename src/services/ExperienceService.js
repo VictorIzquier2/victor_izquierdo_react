@@ -23,8 +23,8 @@ class ExperienceService {
     .catch(this.errorHandler);
   }
   
-  saveNewExperience (newExperience) {
-    return this.service.post('/profile/addExperience', newExperience)
+  saveNewExperience (newExperience, id) {
+    return this.service.post('/profile/addExperience', { newExperience, id })
       .then(res => res.data)
       .catch(this.errorHandler);
   }

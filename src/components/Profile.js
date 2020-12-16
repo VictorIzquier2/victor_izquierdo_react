@@ -79,7 +79,7 @@ class Profile extends Component {
   submitNewExperience = (e) => {
     e.preventDefault();
     console.log(this.state.experience);
-    this.ExperienceService.saveNewExperience(this.state.experience)
+    this.ExperienceService.saveNewExperience(this.state.experience, this.props.isLogged._id)
     .then(res => {
       console.log('added: ', res);
       this.getExperiencesFromDB();
