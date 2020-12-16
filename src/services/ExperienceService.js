@@ -27,7 +27,7 @@ class ExperienceService {
     return this.service.post('/profile/addExperience', { ...newExperience, ...id })
       .then((res) => {
         console.log(res.data);
-        res.data
+        return res.data;
       })
       .catch(this.errorHandler);
   }
