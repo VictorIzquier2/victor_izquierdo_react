@@ -53,7 +53,8 @@ class Header extends Component {
 
           this.setState({isLogged: response});
           if(response.role === 'ADMIN'){
-            this.setState({isAdmin: response});
+            //this.setState({isAdmin: response});
+            console.log('hola');
           }
           this.checkIfLoggedIn();
           this.checkIfAdmin();
