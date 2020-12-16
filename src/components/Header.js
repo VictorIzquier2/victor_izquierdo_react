@@ -85,7 +85,7 @@ class Header extends Component {
       .then((result) =>  {
         console.log(result);
         //this.checkIfLoggedIn();
-        this.setState({isLogged: {}})
+        this.setState({isLogged: {}, isAdmin: {}});
       })
       .catch((err) => {
         console.log(err);
