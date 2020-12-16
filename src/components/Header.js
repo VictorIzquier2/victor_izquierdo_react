@@ -49,15 +49,13 @@ class Header extends Component {
     this.service
       .login(this.state.loggingUser.username, this.state.loggingUser.password)
         .then((response) => {
-          console.log(response.role);
-
-          this.setState({isLogged: response});
           if(response.role === 'ADMIN'){
-            //this.setState({isAdmin: response});
-            console.log('hola');
+            this.setState({isAdmin: response, isLogged: response});
+          }else{
+            this.setState({isLogged: response});
           }
           this.checkIfLoggedIn();
-          this.checkIfAdmin();
+          //this.checkIfAdmin();
         })
         .catch((err) => {
           console.log('Sorry something went wrong on submit', err);
