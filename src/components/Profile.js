@@ -82,7 +82,6 @@ class Profile extends Component {
       .saveNewExperience(this.state.experience, this.props.isLogged._id)
         .then((res) => {
           console.log('added: ', res);
-          this.setState({experiencesFromDB: res})
           this.getExperiencesFromDB();
 
         })
@@ -148,7 +147,6 @@ class Profile extends Component {
       .saveNewEducation(this.state.education, this.props.isLogged._id)
         .then((res) => {
             console.log('Added: ', res);
-            this.setState({educationsFromDB: res})
             this.getEducationsFromDB();
           })
           .catch(err => {
