@@ -78,7 +78,7 @@ class Profile extends Component {
   
   submitNewExperience = (e) => {
     e.preventDefault();
-    
+    console.log(this.state.experience);
     this.ExperienceService.saveNewExperience(this.state.experience)
     .then(res => {
       console.log('added: ', res);
@@ -142,9 +142,10 @@ class Profile extends Component {
 
     submitNewEducation = (e) => {
       e.preventDefault();
-  
+      console.log(1);
       this.EducationService.saveNewEducation(this.state.education)
-        .then(res => {
+      .then(res => {
+          console.log(2);
           console.log('Added: ', res);
           this.getEducationsFromDB();
         })
