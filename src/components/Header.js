@@ -50,6 +50,9 @@ class Header extends Component {
       .login(this.state.loggingUser.username, this.state.loggingUser.password)
         .then((response) => {
           this.setState({isLogged: response});
+          if(response.role === 'ADMIN'){
+            this.setState({isAdmin: response});
+          }
           this.checkIfLoggedIn();
           this.checkIfAdmin();
         })
