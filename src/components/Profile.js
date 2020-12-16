@@ -78,16 +78,15 @@ class Profile extends Component {
   
   submitNewExperience = (e) => {
     e.preventDefault();
-    this.ExperienceService
-      .saveNewExperience(this.state.experience, this.props.isLogged._id)
-        .then((res) => {
-          console.log('added: ', res);
-          this.getExperiencesFromDB();
-
-        })
-        .catch(err => {
-          console.log("Error while adding the new Experience: ", err);
-        });
+    
+    this.ExperienceService.saveNewExperience(this.state.experience)
+    .then(res => {
+      console.log('added: ', res);
+      this.getExperiencesFromDB();
+    })
+    .catch(err => {
+      console.log("Error while adding the new Experience: ", err);
+    });
     
   }
   
@@ -112,8 +111,8 @@ class Profile extends Component {
     getEducationsFromDB = () => {
       return this.EducationService.getEducations()
         .then((response) => {
-          console.log(response);
-          this.setState({educationsFromDB: response});
+          this.setState({educationsFromDB: response})
+          console.log(this.state.educationsFromDB);
         })
         .catch((err) => {
           console.log(err);
@@ -143,15 +142,15 @@ class Profile extends Component {
 
     submitNewEducation = (e) => {
       e.preventDefault();
-      this.EducationService
-      .saveNewEducation(this.state.education, this.props.isLogged._id)
-        .then((res) => {
-            console.log('Added: ', res);
-            this.getEducationsFromDB();
-          })
-          .catch(err => {
-            console.log("Error while adding the new Education", err);
-          });
+  
+      this.EducationService.saveNewEducation(this.state.education)
+        .then(res => {
+          console.log('Added: ', res);
+          this.getEducationsFromDB();
+        })
+        .catch(err => {
+          console.log("Error while adding the new Education", err);
+        });
     }
   
     changeHandlerEducation = (e) => {

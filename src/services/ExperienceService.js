@@ -3,7 +3,7 @@ import axios from 'axios';
 class ExperienceService {
   constructor(){
     let service = axios.create({
-      baseURL: 'https://victor-izquierdo-site.herokuapp.com',
+      baseURL: 'https://victor-izquierdo-site.herokuapp.com/',
       withCredentials: true
     });
     this.service = service;
@@ -23,12 +23,9 @@ class ExperienceService {
     .catch(this.errorHandler);
   }
   
-  saveNewExperience (newExperience, id) {
-    return this.service.post('/profile/addExperience', { newExperience, id })
-      .then((res) => {
-        console.log(res.data);
-        return res.data;
-      })
+  saveNewExperience (newExperience) {
+    return this.service.post('/profile/addExperience', newExperience)
+      .then(res => res.data)
       .catch(this.errorHandler);
   }
   getExperiences = () => {
