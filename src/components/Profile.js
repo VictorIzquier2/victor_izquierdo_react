@@ -169,13 +169,17 @@ class Profile extends Component {
             console.log("Error while uploading the file: ", err);
         });
       }
-  
+      
   componentDidMount(){
+    /*
     this.UserService.loggedin(this.props.isLogged._id)
-      .then(() =>{
+    .then(() =>{
+        */
         this.getAllExperiences();
         this.getAllEducations();
+      /*
       })
+      */
   }
   
   render(){
