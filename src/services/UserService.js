@@ -15,7 +15,9 @@ class UserService {
   login = (username, password) => {
     console.log(2);
     return this.service.post('/login', {username, password})
-    .then(response => response.data)
+    .then((response) => {
+      return response.data;
+    })
   }
   loggedin = () => {
     return this.service.get('/loggedin')

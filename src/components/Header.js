@@ -21,6 +21,8 @@ class Header extends Component {
       isAdmin: {},
       newUser: {username: '', email: '', password: ''},
       loggingUser: { username: '', password: '' },
+      loggingMessage: '',
+      signupMessage: ''
     }
   }
   
@@ -29,13 +31,17 @@ class Header extends Component {
   //SIGNUP CONFIG
   submitSignUp = (event) => {
     event.preventDefault();
-    this.service.signup(this.state.newUser.username, this.state.newUser.email, this.state.newUser.password)
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    this.service
+      .signup(this.state.newUser.username, this.state.newUser.email, this.state.newUser.password)
+        .then((result) => {
+          if(result.message){
+            this.setState({signupMessage: result.message});
+          }
+          console.log(result);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
   }; 
 
   changeHandlerSignUp = (_eventTarget) => {
@@ -48,6 +54,9 @@ class Header extends Component {
     this.service
       .login(this.state.loggingUser.username, this.state.loggingUser.password)
         .then((response) => {
+          if(response.message){
+            this.setState({loggingMessage: response.message});
+          }
           if(response.role === 'ADMIN'){
             this.setState({isAdmin: response, isLogged: response});
           }else{
@@ -69,6 +78,8 @@ class Header extends Component {
     this.service.loggedin()
       .then((result) => {
         this.setState({isLogged: result})
+        this.setState({loggingMessage: ''})
+        this.setState({signupMessage: ''})
       })
   };
 
@@ -173,6 +184,7 @@ class Header extends Component {
                       submitSignUp={this.submitSignUp}
                       newUser={this.state.newUser}
                       changeHandlerSignUp={this.changeHandlerSignUp}
+                      message={this.state.signupMessage}
                     />
                   : <Redirect to='/' />
                 )}
@@ -184,6 +196,7 @@ class Header extends Component {
                     submitLogIn={this.submitLogIn}
                     loggingUser={this.state.loggingUser}
                     changeHandlerLogIn={this.changeHandlerLogIn}
+                    message={this.state.loggingMessage}
                   />
                 )}
               />

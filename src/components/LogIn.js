@@ -10,7 +10,7 @@ const LogIn = (props) => {
       <h4 className='title is-4'>Log In</h4>
       <form className='form' onSubmit={props.submitLogIn}>
         <div className='field'>
-          <div className='field-label is normal'>
+          <div className='field-label is-normal'>
             <label className='label' htmlFor='username'>Username: </label>
           </div>
           <div className='control'>
@@ -24,7 +24,7 @@ const LogIn = (props) => {
           </div>
         </div>
         <div className='field'>
-          <div className='field-label is normal'>
+          <div className='field-label is-normal'>
             <label className='label' htmlFor='password'>Password: </label>
           </div>
           <div className='control'>
@@ -38,6 +38,11 @@ const LogIn = (props) => {
           </div>
         </div>
         <br/>
+        <div className='field'>
+          <div className='field-label is-normal'>
+            <strong>{props.message}</strong>
+          </div>
+        </div>
         <button className='button is-light' type='submit'><strong>Log In</strong></button>
       </form>
       <br/>

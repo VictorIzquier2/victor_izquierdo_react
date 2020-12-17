@@ -52,6 +52,11 @@ const SignUp = (props) => {
           </div>
         </div>
         <br/>
+         <div className='field'>
+          <div className='field-label is-normal'>
+            <strong>{props.message}</strong>
+          </div>
+        </div>
         <button className='button is-primary' type='submit'><strong>Sign Up</strong></button>
       </form>
       <br/>
