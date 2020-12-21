@@ -94,7 +94,6 @@ class Header extends Component {
   }
 
   logOut = (event) => {
-    event.preventDefault();
     this.service
       .logout(this.state.loggins)
         .then((result) =>  {
