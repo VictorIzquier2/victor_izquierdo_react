@@ -93,16 +93,18 @@ class Header extends Component {
       })
   }
 
-  logOut = () => {
-    this.service.logout()
-      .then((result) =>  {
-        console.log(result);
-        //this.checkIfLoggedIn();
-        this.setState({isLogged: {}, isAdmin: {}});
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+  logOut = (event) => {
+    event.preventDefault();
+    this.service
+      .logout(this.state.loggins)
+        .then((result) =>  {
+          console.log(result);
+          //this.checkIfLoggedIn();
+          this.setState({isLogged: {}, isAdmin: {}});
+        })
+        .catch((err) => {
+          console.log(err);
+        })
   }
   
   componentDidMount() {

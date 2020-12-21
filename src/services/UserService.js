@@ -23,8 +23,8 @@ class UserService {
     return this.service.get('/loggedin')
       .then(response => response.data);
   }
-  logout = () => {
-    return this.service.post('/logout', {})
+  logout = (loggins) => {
+    return this.service.post('/logout', {loggins})
     .then(response => response.data)
   }
   isAdmin = () => {
