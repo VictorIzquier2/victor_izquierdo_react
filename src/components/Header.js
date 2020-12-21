@@ -78,7 +78,6 @@ class Header extends Component {
   };
   
   uploggins = (event) => {
-    event.preventDefault();
     this.service
       .uploggins(this.state.loggins)
         .then((response) => {
@@ -94,6 +93,7 @@ class Header extends Component {
         this.setState({isLogged: result})
         this.setState({loggingMessage: ''})
         this.setState({signupMessage: ''})
+        this.uploggins();
       })
   };
 
@@ -119,7 +119,6 @@ class Header extends Component {
   componentDidMount() {
     this.checkIfLoggedIn();
     this.checkIfAdmin();
-    this.uploggins();
   }
   
   render(){
