@@ -19,12 +19,8 @@ class UserService {
       return response.data;
     })
   }
-  uploggins = (loggins) => {
-    return this.service.post('/uploggins', {loggins})
-      .then(response => response.data);
-  }
-  loggedin = () => {
-    return this.service.get('/loggedin')
+  loggedin = (loggins) => {
+    return this.service.get('/loggedin', {loggins})
       .then(response => response.data);
   }
   logout = () => {

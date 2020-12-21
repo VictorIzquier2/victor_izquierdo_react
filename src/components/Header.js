@@ -77,23 +77,12 @@ class Header extends Component {
     this.setState({loggingUser: {...this.state.loggingUser, [_eventTarget.name]: _eventTarget.value}});
   };
   
-  uploggins = (event) => {
-    this.service
-      .uploggins(this.state.loggins)
-        .then((response) => {
-          if(response){
-            console.log(response);
-          }
-        })
-  }
-  
   checkIfLoggedIn = () => {
-    this.service.loggedin()
+    this.service.loggedin(this.state.loggins)
       .then((result) => {
         this.setState({isLogged: result})
         this.setState({loggingMessage: ''})
         this.setState({signupMessage: ''})
-        this.uploggins();
       })
   };
 
