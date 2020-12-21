@@ -76,9 +76,9 @@ class Header extends Component {
   changeHandlerLogIn = (_eventTarget) => {
     this.setState({loggingUser: {...this.state.loggingUser, [_eventTarget.name]: _eventTarget.value}});
   };
-  
+
   checkIfLoggedIn = () => {
-    this.service.loggedin(this.state.loggins)
+    this.service.loggedin()
       .then((result) => {
         this.setState({isLogged: result})
         this.setState({loggingMessage: ''})

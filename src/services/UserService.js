@@ -19,8 +19,8 @@ class UserService {
       return response.data;
     })
   }
-  loggedin = (loggins) => {
-    return this.service.get('/loggedin', {loggins})
+  loggedin = () => {
+    return this.service.get('/loggedin')
       .then(response => response.data);
   }
   logout = () => {
