@@ -35,7 +35,7 @@ class Profile extends Component {
           ubicacion: '',
           descripcion: '',
         },
-        educationsFromDB: 0
+        educationsFromDB: 0,
     }
     
   }

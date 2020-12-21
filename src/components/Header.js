@@ -22,7 +22,8 @@ class Header extends Component {
       newUser: {username: '', email: '', password: ''},
       loggingUser: { username: '', password: '' },
       loggingMessage: '',
-      signupMessage: ''
+      signupMessage: '',
+      loggins: 0,
     }
   }
   
@@ -52,15 +53,17 @@ class Header extends Component {
   submitLogIn = (event) => {
     event.preventDefault();
     this.service
-      .login(this.state.loggingUser.username, this.state.loggingUser.password)
-        .then((response) => {
-          if(response.message){
+    .login(this.state.loggingUser.username, this.state.loggingUser.password)
+    .then((response) => {
+      const upLogin = this.state.loggins + 1;
+      if(response.message){
             this.setState({loggingMessage: response.message});
           }
           if(response.role === 'ADMIN'){
             this.setState({isAdmin: response, isLogged: response});
           }else{
             this.setState({isLogged: response});
+            this.setState({loggins: upLogin});
           }
           this.checkIfLoggedIn();
           //this.checkIfAdmin();
@@ -73,7 +76,18 @@ class Header extends Component {
   changeHandlerLogIn = (_eventTarget) => {
     this.setState({loggingUser: {...this.state.loggingUser, [_eventTarget.name]: _eventTarget.value}});
   };
-
+  
+  uploggins = (event) => {
+    event.preventDefault();
+    this.service
+      .uploggins(this.state.loggins)
+        .then((response) => {
+          if(response){
+            console.log(response);
+          }
+        })
+  }
+  
   checkIfLoggedIn = () => {
     this.service.loggedin()
       .then((result) => {
@@ -105,6 +119,7 @@ class Header extends Component {
   componentDidMount() {
     this.checkIfLoggedIn();
     this.checkIfAdmin();
+    this.uploggins();
   }
   
   render(){
