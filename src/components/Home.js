@@ -191,7 +191,7 @@ class Home extends Component {
           </section>
           <section className='is-full'>
             <div className='container slider-3'>
-              <div className='columns is-mobile'>
+              <div className='pros is-mobile'>
                 <div className='column is-half'>
                   <h5 className='title is-5 is-lake'>Experiencias</h5>
                   <div className='box'>
@@ -207,6 +207,7 @@ class Home extends Component {
                     }
                   </div>
                 </div>
+                <br/>
                 <div className='column is-half'>
                   <h5 className='title is-5 is-lake'>Aprendizaje</h5>
                   <div className='box'>
@@ -222,6 +223,7 @@ class Home extends Component {
                     }
                   </div>
                 </div>
+                <br/>
               </div>
             </div>
           </section>

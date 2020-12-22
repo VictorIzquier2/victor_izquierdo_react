@@ -8,6 +8,7 @@ import SignUp from './SignUp';
 import LogIn from './LogIn';
 import Home from './Home';
 import Profile from './Profile';
+import Gallery from './Gallery';
 
 // DEPENDENCIES
 import { Link, Route, Redirect, Switch } from 'react-router-dom';
@@ -127,8 +128,10 @@ class Header extends Component {
               </div>
               <div id='navbarBasicMenu' className='navbar-menu'>
                 <div className='navbar-start'>
-                    <Link className='navbar-item' to='/'><strong>Home</strong></Link>
+                  <Link className='navbar-item' to='/'><strong>Home</strong></Link>
                   {this.state.isLogged.username && <Link className='navbar-item' to='/profile'><strong>Profile</strong></Link>}
+                  <Link className='navbar-item' to='/strengths'><strong>Strengths</strong></Link>
+                  <Link className='navbar-item' to='/gallery'><strong>Gallery</strong></Link>
                   <div className='navbar-item has-dropdown is-hoverable'>
                     {/* 
                     <Link className='navbar-link' to='#'>
@@ -177,6 +180,17 @@ class Header extends Component {
                                 logOut={this.logOut} 
                                 isLogged={this.state.isLogged}
                               />
+                }
+              />
+              <Route
+                exact
+                path='/gallery'
+                render={() => <Gallery
+                                logOut={this.logOut}
+                                isLogged={this.state.isLogged}
+                                isAdmin={this.state.isAdmin}
+                              />
+                
                 }
               />
               <Route

@@ -8,11 +8,11 @@ class ExperienceService {
     });
     this.service = service;
   }
-  
+
   errorHandler = (err) => {
     throw err;
-  };
-  
+  }
+
   handleUpload (theFile) {
     // console.log('file in service: ', theFile)
     return this.service.post('/upload', theFile)
@@ -22,12 +22,13 @@ class ExperienceService {
     })
     .catch(this.errorHandler);
   }
-  
+
   saveNewExperience (newExperience) {
     return this.service.post('/profile/addExperience', newExperience)
       .then(res => res.data)
       .catch(this.errorHandler);
   }
+
   getExperiences = () => {
     return this.service.get('/profile/experiences')
       .then(response => response.data);
@@ -44,6 +45,5 @@ class ExperienceService {
         console.log(err);
       });
   }
-
 }
 export default ExperienceService; 

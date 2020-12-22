@@ -1,0 +1,24 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+}
+
+.project-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.is-20 {
+  width: 20rem;
+  margin:0 1rem;
+}
+
+.control > textarea {
+  width: 18rem;
+  left: -1rem;
+}

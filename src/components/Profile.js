@@ -46,15 +46,15 @@ class Profile extends Component {
 
   getExperiencesFromDB = () => {
     return this.ExperienceService.getExperiences()
-    .then((response) =>{
-      console.log(response)
-      this.setState({experiencesFromDB: response})
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+      .then((response) =>{
+        console.log(response)
+        this.setState({experiencesFromDB: response})
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
-
+  
   deleteExperiencesFromDB = (event, id) => {
     event.preventDefault();
     this.ExperienceService.deleteExperience(id)

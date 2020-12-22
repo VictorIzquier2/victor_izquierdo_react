@@ -53,3 +53,12 @@
   background-color: var(--sixties-green);
   color: white;
 }
+.pros {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 720px){
+  .pros {
+    flex-direction: row;
+  }
+}
