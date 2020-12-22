@@ -10,12 +10,6 @@ import dragonKaiDojo from './assets/images/dragonKaiDojo.png';
 
 // COMPONENTS
 import { Link } from 'react-router-dom';
-import Experience from './Experience';
-import Education from './Education';
-
-// DEPENDENCIES
-import ExperienceService from '../services/ExperienceService';
-import EducationService from '../services/EducationService';
 
 class Home extends Component {
   
@@ -25,55 +19,6 @@ class Home extends Component {
       experiencesFromDB: 0,
       educationsFromDB: 0
     }    
-  }
-
-  ExperienceService = new ExperienceService();
-  EducationService = new EducationService();
-
-  getExperiencesFromDB = () => {
-    return this.ExperienceService.getExperiences()
-      .then((response) => {
-        this.setState({experiencesFromDB: response})
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
-
-  getAllExperiences = () => {
-    this.getExperiencesFromDB()
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-
-  getEducationsFromDB = () => {
-    return this.EducationService.getEducations()
-      .then((response) => {
-        this.setState({educationsFromDB: response});
-        console.log(this.state.educationsFromDB);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
-
-  getAllEducations = () => {
-    this.getEducationsFromDB()
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
-
-  componentDidMount(){
-    this.getAllExperiences();
-    this.getAllEducations();
   }
 
   render(){
@@ -188,44 +133,6 @@ class Home extends Component {
               </div>
             </article>
             <hr/>
-          </section>
-          <section className='is-full'>
-            <div className='container slider-3'>
-              <div className='pros is-mobile'>
-                <div className='column is-half'>
-                  <h5 className='title is-5 is-lake'>Experiencias</h5>
-                  <div className='box'>
-                    {this.state.experiencesFromDB &&
-                      this.state.experiencesFromDB.map((item, i) => {
-                        return(
-                          < Experience
-                            key={i}
-                            item={item}
-                          />
-                        )
-                      })
-                    }
-                  </div>
-                </div>
-                <br/>
-                <div className='column is-half'>
-                  <h5 className='title is-5 is-lake'>Aprendizaje</h5>
-                  <div className='box'>
-                    {this.state.educationsFromDB &&
-                      this.state.educationsFromDB.map((item, i) => {
-                        return(
-                          <Education
-                            key={i}
-                            item={item}
-                          />
-                        )
-                      })
-                    }
-                  </div>
-                </div>
-                <br/>
-              </div>
-            </div>
           </section>
         </div>
       </div>

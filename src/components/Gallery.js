@@ -67,10 +67,10 @@ class Gallery extends Component {
         console.log('Error while adding the new Project; ', err);
       });
   }
-
+  
   changeHandlerProject = (e) => {
     const {name, value } = e.target;
-    this.setState({ project: { ...this.state.Project, [name] : value } })
+    this.setState({ project: { ...this.state.project, [name] : value } })
   }
 
   handleFileUploadProject = e => {
@@ -105,21 +105,20 @@ class Gallery extends Component {
           <div className='sections is-full'>
             <section className='section'>
               <h3 className='title is-3'>Galería</h3>
-              <div className='container columns is-mobile'>
-                <div className='column is-gapless'>
-                  <div className='box'>
-                    {this.state.projectsFromDB &&
-                      this.state.projectsFromDB.map((item, i) => {
-                        return(
-                          <Project
-                            key={i}
-                            item={item}
-                            isAdmin={this.deleteProjectsFromDB}
-                          />
-                        )
-                      })
-                    }
-                  </div>
+              <div className='box'>
+                <div className='projects'>
+                  {this.state.projectsFromDB &&
+                    this.state.projectsFromDB.map((item, i) => {
+                      return(
+                        <Project
+                          key={i}
+                          item={item}
+                          isAdmin={this.props.isAdmin.username}
+                          deleteProjectsFromDB={this.deleteProjectsFromDB}
+                        />
+                      )
+                    })
+                  }
                 </div>
               </div>
             </section>

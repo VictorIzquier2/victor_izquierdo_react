@@ -129,8 +129,7 @@ class Header extends Component {
               <div id='navbarBasicMenu' className='navbar-menu'>
                 <div className='navbar-start'>
                   <Link className='navbar-item' to='/'><strong>Home</strong></Link>
-                  {this.state.isLogged.username && <Link className='navbar-item' to='/profile'><strong>Profile</strong></Link>}
-                  <Link className='navbar-item' to='/strengths'><strong>Strengths</strong></Link>
+                  <Link className='navbar-item' to='/profile'><strong>Profile</strong></Link>
                   <Link className='navbar-item' to='/gallery'><strong>Gallery</strong></Link>
                   <div className='navbar-item has-dropdown is-hoverable'>
                     {/* 

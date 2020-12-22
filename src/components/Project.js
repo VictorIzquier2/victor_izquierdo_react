@@ -1,16 +1,17 @@
 import React from 'react';
 import 'bulma/css/bulma.css';
 import './assets/css/Globals.css';
+import './assets/css/Project.css';
 
 const Project = (props) => {
   return (
-    <div className='card'>
+    <div className='card project is-gapless'>
       <div className='card-image'>
         <figure className='is-4by3'>
           <img src={props.item.imageUrl} alt='1280x960'/>
         </figure>
       </div>
-      <div class='card-content'>
+      <div className='card-content'>
         <div className='media'>
           {/*
           <div className='media-left'>
@@ -27,7 +28,7 @@ const Project = (props) => {
         <div className='content'>
           <p className='has-text-left'>{props.item.descripcion}</p>
           {props.isAdmin &&
-            <form onSubmit={(event) => props.deleteEducationsFromDB(event, props.item._id)}>
+            <form onSubmit={(event) => props.deleteProjectsFromDB(event, props.item._id)}>
               <br/>
               <button className='button is-danger' type='submit'>Delete</button>
             </form>

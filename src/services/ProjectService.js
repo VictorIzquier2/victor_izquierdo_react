@@ -12,8 +12,8 @@ class ProjectService {
   errorHandler = (err) => {
     throw err;
   }
-
-  handlerUpload(theFile){
+  
+  handleUpload(theFile){
     
     return this.service.post('upload', theFile)
       .then(res => {

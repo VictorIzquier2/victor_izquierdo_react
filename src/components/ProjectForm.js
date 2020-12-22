@@ -7,7 +7,7 @@ const ProjectForm = (props) => {
   return(
     <fieldset className='container'>
       <br/>
-      <h4 className='title is-4'>Añádir</h4>
+      <h4 className='title is-4'>Añadir</h4>
       <p className='subtitle is-6'>Nuevo projecto</p>
       <form className='form' onSubmit={(e)=>props.submitNewProject(e)}>
         <div className='project-form is-full'>
@@ -44,8 +44,8 @@ const ProjectForm = (props) => {
                   <label className='label' htmlFor='descripcion'>Descripcion</label>
                 </div>
                 <div className='control'>
-                  <input
-                    className='input is-small is-20'
+                  <textarea
+                    className='input textarea is-small is-20'
                     type='text'
                     name='descripcion'
                     onChange={(e) => props.changeHandlerProject(e)}
