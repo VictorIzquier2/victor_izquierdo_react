@@ -19,13 +19,17 @@ class UserService {
       return response.data;
     })
   }
+  loginWithSlack = () => {
+    return this.service.get('/auth/slack')
+      .then(response => response.data);
+  }
   loggedin = () => {
     return this.service.get('/loggedin')
       .then(response => response.data);
   }
   logout = (loggins) => {
     return this.service.post('/logout', {loggins})
-    .then(response => response.data)
+    .then(response => response.data);
   }
   isAdmin = () => {
     return this.service.get('/isadmin')

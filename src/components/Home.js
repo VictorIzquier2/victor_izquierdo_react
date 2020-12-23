@@ -12,7 +12,7 @@ import dragonKaiDojo from './assets/images/dragonKaiDojo.png';
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
-  
+
   constructor(props){
     super(props);
     this.state = {
@@ -20,12 +20,11 @@ class Home extends Component {
       educationsFromDB: 0
     }    
   }
-
   render(){
     return(
       <div className='container is-widescreen is-full'>
         <br/>
-        <div className='sections is-full'>
+        <div sr className='sections is-full'>
           <section className='section sky-blue'>
             <div className='container columns ml-is-0 is-mobile slider-1'>
               <div className='column info is-half is-gapless'>
