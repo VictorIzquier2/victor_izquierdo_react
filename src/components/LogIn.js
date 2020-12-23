@@ -43,11 +43,7 @@ const LogIn = (props) => {
             <strong>{props.message}</strong>
           </div>
         </div>
-        <button className='button is-primary' type='submit'><strong>Log In</strong></button>
-      </form>
-      <br/>
-      <form className='form' onSubmit={props.submitLogInWithSlack}>
-        <button className='button is-light' type='submit'><strong>Log In with Slack</strong></button>
+        <button className='button is-light' type='submit'><strong>Log In</strong></button>
       </form>
       <br/>
     </fieldset>

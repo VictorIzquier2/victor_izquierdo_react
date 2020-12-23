@@ -24,7 +24,7 @@ class Home extends Component {
     return(
       <div className='container is-widescreen is-full'>
         <br/>
-        <div sr className='sections is-full'>
+        <div className='sections is-full'>
           <section className='section sky-blue'>
             <div className='container columns ml-is-0 is-mobile slider-1'>
               <div className='column info is-half is-gapless'>

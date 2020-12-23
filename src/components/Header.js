@@ -74,28 +74,6 @@ class Header extends Component {
         });
   };
 
-  submitLogInWithSlack = (event) => {
-    event.preventDefault();
-    this.service
-      .loginWithSlack()
-        .then((response) => {
-          const upLogin = this.state.loggins + 1;
-          if(response.message){
-            this.setState({loggingMessage: response.message});
-          }
-          if(response.role === 'ADMIN'){
-            this.setState({isAdmin: response, isLogged: response});
-          }else{
-            this.setState({isLogged: response});
-            this.setState({loggins: upLogin});
-          }
-          this.checkIfLoggedIn();
-        })
-        .catch((err) => {
-          console.log('Sorry, something went wrong on submit with Slack', err);
-        })
-  }
-
   changeHandlerLogIn = (_eventTarget) => {
     this.setState({loggingUser: {...this.state.loggingUser, [_eventTarget.name]: _eventTarget.value}});
   };
@@ -233,7 +211,6 @@ class Header extends Component {
                 render={() => (
                   <LogIn
                     submitLogIn={this.submitLogIn}
-                    submitLogInWithSlack={this.submitLogInWithSlack}
                     loggingUser={this.state.loggingUser}
                     changeHandlerLogIn={this.changeHandlerLogIn}
                     message={this.state.loggingMessage}
@@ -256,7 +233,7 @@ class Header extends Component {
           
     )
   }
-  
+
 }
 
 export default Header;
